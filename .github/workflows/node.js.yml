@@ -56,6 +56,11 @@ jobs:
 
     needs: build
 
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: ['chrome', 'firefox', 'edge']
+
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
@@ -63,12 +68,20 @@ jobs:
       with:
         node-version: 20.18.0
         cache: 'npm'
+    - name: Install Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
+    - name: Install Chromium
+      run: |
+        sudo apt-get install -y chromium-browser    
     - run: npm ci
     - run: npm run build --if-present
     - name: Start Application
-      run: node app.js &
-      env:
-          PORT: 3000
+      run: | 
+          node app.js &
+          sleep 5
       
     - name: Run Order Status Tests
       run: npx mocha test/orderStatusTest.js
