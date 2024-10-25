@@ -64,11 +64,12 @@ describe("Order Status Test", function () {
 
     const loginButton = await driver.findElement(By.css(".action-button"));
     await loginButton.click();
-    await driver.sleep(5000);
+    //await driver.sleep(5000);
 
+    
+    await driver.wait(until.urlIs("http://localhost:3000/"), 100000);
     const currentUrl = await driver.getCurrentUrl();
     console.log(currentUrl);
-    // await driver.wait(until.urlIs("http://localhost:3000/"), 30000);
     
     const processingElement = await driver.findElement(By.id("processing"));
     await driver.sleep(1000);
