@@ -44,7 +44,7 @@ describe("Order Status Test", function () {
     // Set up Chrome options
     const options = new chrome.Options();
     options.addArguments(
-      "--headless",
+      // "--headless",
       "--no-sandbox",
       "--disable-dev-shm-usage"
     );
@@ -52,16 +52,7 @@ describe("Order Status Test", function () {
       .forBrowser("chrome")
       .setChromeOptions(options)
       .build();
-
-     
-  });
-
-  after(async function () {
-    await driver.quit();
-  });
-
- it("Log in.", async function () {
-    // Log in and fetch counts
+    
     await driver.get("http://localhost:3000/login");
     const usernameInput = await driver.findElement(By.id("username"));
     await usernameInput.sendKeys("Max_Verstappen");
@@ -91,6 +82,11 @@ describe("Order Status Test", function () {
 
     orderCountsDB = await OrderCountsDB();
     await mongoose.disconnect();
+     
+  });
+
+  after(async function () {
+    await driver.quit();
   });
 
   it("Processing count from dashboard and DB match.", function () {
