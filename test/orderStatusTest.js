@@ -52,13 +52,16 @@ describe("Order Status Test", function () {
       .forBrowser("chrome")
       .setChromeOptions(options)
       .build();
+
+     
   });
 
   after(async function () {
     await driver.quit();
   });
 
-  // Log in and fetch counts
+ it("Log in.", function () {
+    // Log in and fetch counts
     await driver.get("http://localhost:3000/login");
     const usernameInput = await driver.findElement(By.id("username"));
     await usernameInput.sendKeys("Max_Verstappen");
@@ -88,6 +91,7 @@ describe("Order Status Test", function () {
 
     orderCountsDB = await OrderCountsDB();
     await mongoose.disconnect();
+  });
 
   it("Processing count from dashboard and DB match.", function () {
     assert.strictEqual(
