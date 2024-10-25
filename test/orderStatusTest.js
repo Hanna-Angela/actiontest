@@ -60,7 +60,7 @@ describe("Order Status Test", function () {
     await driver.quit();
   });
 
- it("Log in.", function () {
+ it("Log in.", async function () {
     // Log in and fetch counts
     await driver.get("http://localhost:3000/login");
     const usernameInput = await driver.findElement(By.id("username"));
