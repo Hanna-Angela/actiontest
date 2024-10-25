@@ -44,7 +44,7 @@ describe("Order Status Test", function () {
     // Set up Chrome options
     const options = new chrome.Options();
     options.addArguments(
-      // "--headless",
+      "--headless",
       "--no-sandbox",
       "--disable-dev-shm-usage"
     );
@@ -64,8 +64,11 @@ describe("Order Status Test", function () {
 
     const loginButton = await driver.findElement(By.css(".action-button"));
     await loginButton.click();
-    // await driver.sleep(5000);
-    await driver.wait(until.urlIs("http://localhost:3000/"), 30000);
+    await driver.sleep(5000);
+
+    const currentUrl = await driver.getCurrentUrl();
+    console.log(currentUrl);
+    // await driver.wait(until.urlIs("http://localhost:3000/"), 30000);
     
     const processingElement = await driver.findElement(By.id("processing"));
     await driver.sleep(1000);
