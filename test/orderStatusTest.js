@@ -57,11 +57,11 @@ describe("Order Status Test", function () {
     await driver.get("http://localhost:3000/login");
     const usernameInput = await driver.findElement(By.id("username"));
     await usernameInput.sendKeys("Max_Verstappen");
-    await driver.sleep(5000);
+    await driver.sleep(1000);
 
     const passwordInput = await driver.findElement(By.id("password"));
     await passwordInput.sendKeys("12345678");
-    await driver.sleep(5000);
+    await driver.sleep(1000);
 
     const loginButton = await driver.findElement(By.css(".action-button"));
     await loginButton.click();
@@ -69,13 +69,13 @@ describe("Order Status Test", function () {
     await driver.wait(until.urlIs("http://localhost:3000/"), 30000);
     
     const processingElement = await driver.findElement(By.id("processing"));
-    await driver.sleep(2000);
+    await driver.sleep(1000);
 
     const toBeShippedElement = await driver.findElement(By.id("to-be-shipped"));
-    await driver.sleep(2000);
+    await driver.sleep(1000);
 
     const cancelledElement = await driver.findElement(By.id("cancelled"));
-    await driver.sleep(2000);
+    await driver.sleep(1000);
 
     processingCountDashboard = parseInt(await processingElement.getText());
     toBeShippedCountDashboard = parseInt(await toBeShippedElement.getText());
