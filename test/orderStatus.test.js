@@ -51,7 +51,7 @@ describe("Order Status Test", () => {
       .setChromeOptions(options)
       .build();
 
-    await driver.get('${{ steps.ngrok.outputs.public_url }}/login');
+    await driver.get("https://baaf-158-62-16-193.ngrok-free.app/login");
 
     url = await driver.getCurrentUrl();
     console.log(url);
@@ -59,19 +59,22 @@ describe("Order Status Test", () => {
     // Log in
     const usernameInput = await driver.findElement(By.id("username"));
     await usernameInput.sendKeys("Abstrak_Admin");
+    driver.sleep(1000);
 
     const passwordInput = await driver.findElement(By.id("password"));
     await passwordInput.sendKeys("TOUCH.DOWN!");
+    driver.sleep(1000);
 
     const loginButton = await driver.findElement(By.css(".action-button"));
     await loginButton.click();
+    driver.sleep(1000);
 
     // await driver.wait(until.urlIs("http://localhost:3000"), 10000);
     // Wait until the URL is no longer the login URL
-    await driver.wait(async () => {
-      const currentUrl = await driver.getCurrentUrl();
-      return currentUrl !== '${{ steps.ngrok.outputs.public_url }}/login';
-    }, 10000); // Adjust the timeout as necessary
+    // await driver.wait(async () => {
+    //   const currentUrl = await driver.getCurrentUrl();
+    //   return currentUrl !== '${{ steps.ngrok.outputs.public_url }}/login';
+    // }, 10000); // Adjust the timeout as necessary
 
     // Fetch data from dashboard
     processingCountDashboard = parseInt(
