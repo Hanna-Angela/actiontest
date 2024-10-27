@@ -52,6 +52,7 @@ describe("Order Status Test", () => {
       .build();
 
     await driver.get("https://d087-158-62-16-193.ngrok-free.app/login");
+    driver.sleep(1000);
 
     url = await driver.getCurrentUrl();
     console.log(url);
