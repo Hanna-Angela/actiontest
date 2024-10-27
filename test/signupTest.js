@@ -9,7 +9,7 @@ describe("Signup Test", function () {
   // Increase timeout for tests
   this.timeout(30000);
 
-  before(async function () {
+  beforeEach(async function () {
     // Set up Chrome options
     const options = new chrome.Options();
     options.addArguments(
@@ -27,7 +27,7 @@ describe("Signup Test", function () {
     await driver.sleep(1000);
   });
 
-  after(async function () {
+  afterEach(async function () {
     await driver.quit();
   });
 
