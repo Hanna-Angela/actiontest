@@ -51,7 +51,7 @@ describe("Order Status Test", () => {
       .setChromeOptions(options)
       .build();
 
-    await driver.get("http://localhost:3000/login");
+    await driver.get('${{ steps.ngrok.outputs.public_url }}/login');
 
     url = await driver.getCurrentUrl();
     console.log(url);
@@ -70,7 +70,7 @@ describe("Order Status Test", () => {
     // Wait until the URL is no longer the login URL
     await driver.wait(async () => {
       const currentUrl = await driver.getCurrentUrl();
-      return currentUrl !== "http://localhost:3000/login";
+      return currentUrl !== '${{ steps.ngrok.outputs.public_url }}/login';
     }, 10000); // Adjust the timeout as necessary
 
     // Fetch data from dashboard
