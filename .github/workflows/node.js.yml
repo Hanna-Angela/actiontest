@@ -109,7 +109,7 @@ jobs:
         node app.js &
         sleep 5 # Optional: wait a few seconds to ensure the server is up
     - name: Wait for Application to be Ready
-      run: npx wait-on http://localhost:3000
+      run: npx wait-on http://127.0.0.1:3000
       
     - name: Run Order Status Tests
       run: npm run test -- test/orderStatus.test.js
