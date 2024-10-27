@@ -108,7 +108,7 @@ jobs:
       run: node app.js &
       
     - name: Run Order Status Tests
-      run: npm run test -- tests/signupTest.js
+      run: npm run test -- test/signupTest.js
 
 
 
