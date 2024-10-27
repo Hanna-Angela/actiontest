@@ -51,7 +51,7 @@ describe("Order Status Test", () => {
       .setChromeOptions(options)
       .build();
 
-    await driver.get("https://baaf-158-62-16-193.ngrok-free.app/login");
+    await driver.get("https://d087-158-62-16-193.ngrok-free.app/login");
 
     url = await driver.getCurrentUrl();
     console.log(url);
