@@ -51,6 +51,9 @@ describe("Order Status Test", () => {
       .setChromeOptions(options)
       .build();
 
+    url = await driver.getCurrentUrl();
+    console.log(url);
+
     await driver.get("http://localhost:3000/login");
 
     // Log in
