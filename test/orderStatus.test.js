@@ -51,11 +51,15 @@ describe("Order Status Test", () => {
       .setChromeOptions(options)
       .build();
 
-    await driver.get("https://d087-158-62-16-193.ngrok-free.app/login");
+    await driver.get("https://6cf8-158-62-16-193.ngrok-free.app");
     driver.sleep(1000);
 
     url = await driver.getCurrentUrl();
     console.log(url);
+
+    const ngrokButton = await driver.findElement(By.css('button'));
+    await ngrokButton.click();
+    driver.sleep(1000);
 
     // Log in
     const usernameInput = await driver.findElement(By.id("username"));
