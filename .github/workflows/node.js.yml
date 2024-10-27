@@ -105,7 +105,9 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - name: Start Application
-      run: node app.js &
+      with:
+        run: node app.js &
+        wait-on: 'http://localhost:3000'
       
     - name: Run Order Status Tests
       run: npm run test -- test/orderStatus.test.js
