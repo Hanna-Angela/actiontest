@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16]
+        node-version: [18]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -95,7 +95,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '18'
         cache: 'npm'
     - name: Install Chrome
       run: |
@@ -108,8 +108,6 @@ jobs:
       run: |
         node app.js &
         sleep 5 # Optional: wait a few seconds to ensure the server is up
-    - name: Wait for Application to be Ready
-      run: npx wait-on http://127.0.0.1:3000
       
     - name: Run Order Status Tests
       run: npm run test -- test/orderStatus.test.js
