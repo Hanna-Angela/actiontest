@@ -105,9 +105,11 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - name: Start Application
-      with:
-        run: node app.js &
-        wait-on: 'http://localhost:3000'
+      run: |
+        node app.js &
+        sleep 5 # Optional: wait a few seconds to ensure the server is up
+    - name: Wait for Application to be Ready
+      run: npx wait-on http://localhost:3000
       
     - name: Run Order Status Tests
       run: npm run test -- test/orderStatus.test.js
