@@ -35,6 +35,7 @@ describe("Order Status Test", () => {
   let processingCountDashboard;
   let toBeShippedCountDashboard;
   let cancelledCountDashboard;
+  jest.setTimeout(30000);
 
   beforeAll(async () => {
     // Set up Chrome options
