@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest"
+    "start": "webpack serve --mode development"
   },
   "author": "",
   "license": "ISC",
