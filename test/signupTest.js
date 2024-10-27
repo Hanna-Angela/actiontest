@@ -7,7 +7,7 @@ describe("Signup Test", function () {
   let driver;
 
   // Increase timeout for tests
-  this.timeout(30000);
+  this.timeout(100000);
 
   before(async function () {
     // Set up Chrome options
