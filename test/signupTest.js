@@ -158,7 +158,7 @@ describe("Signup Test", function () {
       await driver.sleep(1000);
 
       await signupButton.click();
-      await driver.sleep(2000);
+      await driver.sleep(100000);
 
       // Assert the URL based on the test case
       const currentUrl = await driver.getCurrentUrl();
