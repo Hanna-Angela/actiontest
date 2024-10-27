@@ -82,6 +82,31 @@ jobs:
   #   - name: Run Order Status Tests
   #     run: npx mocha test/orderStatusTest.js
 
+  # test_orderstatus:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with: 
+  #         node-version: 20.18.0
+
+  #     - name: Install Dependencies
+  #       run: npm install   
+
+
+  #     - name: Start Server
+  #       run: node app.js &
+
+  #     - name: Create ngrok Tunnel
+  #       uses: ngrok-tunnel-action@v1
+  #       with:
+  #         authtoken: ${{ secrets.NGROK_AUTHTOKEN }} # Replace with your ngrok authtoken
+
+  #     - name: Run Selenium Tests
+  #       run: npm run test test/orderTest.test.js
+
   test_orderstatus:
     runs-on: ubuntu-latest
     steps:
@@ -95,16 +120,8 @@ jobs:
       - name: Install Dependencies
         run: npm install   
 
-
-      - name: Start Server
-        run: node app.js &
-
-      - name: Create ngrok Tunnel
-        uses: ngrok-tunnel-action@v1
-        with:
-          authtoken: ${{ secrets.NGROK_AUTHTOKEN }} # Replace with your ngrok authtoken
-
       - name: Run Selenium Tests
         run: npm run test test/orderTest.test.js
+
 
 
