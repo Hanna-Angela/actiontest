@@ -14,7 +14,7 @@
   "devDependencies": {
     "webpack": "5.1.0",
     "webpack-cli": "5.1.0",
-    "webpack-serve": "5.1.0"
+    "webpack-serve": "^4.0.0"
   },
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
