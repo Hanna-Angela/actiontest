@@ -121,6 +121,9 @@ jobs:
       - name: Install Dependencies
         run: npm install   
 
+      - name: Run local server
+        run: npm run start
+
       - name: Run Selenium Tests
         run: npm run test test/orderStatus.test.js
 
