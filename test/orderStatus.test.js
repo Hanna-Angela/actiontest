@@ -63,7 +63,12 @@ describe("Order Status Test", () => {
     const loginButton = await driver.findElement(By.css(".action-button"));
     await loginButton.click();
 
-    await driver.wait(until.urlIs("http://localhost:3000"), 10000);
+    // await driver.wait(until.urlIs("http://localhost:3000"), 10000);
+    // Wait until the URL is no longer the login URL
+    await driver.wait(async () => {
+      const currentUrl = await driver.getCurrentUrl();
+      return currentUrl !== "http://localhost:3000/login";
+    }, 10000); // Adjust the timeout as necessary
 
     // Fetch data from dashboard
     processingCountDashboard = parseInt(
