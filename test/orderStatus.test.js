@@ -51,10 +51,10 @@ describe("Order Status Test", () => {
       .setChromeOptions(options)
       .build();
 
+    await driver.get("http://localhost:3000/login");
+
     url = await driver.getCurrentUrl();
     console.log(url);
-
-    await driver.get("http://localhost:3000/login");
 
     // Log in
     const usernameInput = await driver.findElement(By.id("username"));
