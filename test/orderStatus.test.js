@@ -62,7 +62,7 @@ describe("Order Status Test", () => {
     const loginButton = await driver.findElement(By.css(".action-button"));
     await loginButton.click();
 
-    await driver.wait(until.urlIs("http://localhost:3000/"), 10000);
+    await driver.wait(until.urlIs("http://localhost:3000"), 10000);
 
     // Fetch data from dashboard
     processingCountDashboard = parseInt(
