@@ -12,9 +12,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^5.1.0",
-    "webpack-cli": "^5.1.0",
-    "webpack-serve": "^4.0.0"
+    "webpack": "^5.x.x",
+    "webpack-cli": "^5.x.x",
+    "webpack-serve": "^3.x.x",
   },
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
