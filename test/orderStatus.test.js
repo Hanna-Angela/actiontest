@@ -51,7 +51,7 @@ describe("Order Status Test", () => {
       .setChromeOptions(options)
       .build();
 
-    await driver.get("https://6cf8-158-62-16-193.ngrok-free.app");
+    await driver.get("https://localhost:3000/login");
     driver.sleep(1000);
 
     url = await driver.getCurrentUrl();
