@@ -117,6 +117,7 @@ jobs:
         uses: actions/setup-node@v3
         with: 
           node-version: 20.18.0
+          cache: 'npm'
       - run: npm ci  
 
       - name: Run local server
