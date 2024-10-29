@@ -118,7 +118,6 @@ jobs:
         with: 
           node-version: 20.18.0
       - run: npm ci  
-      - run: npm run build --if-present
 
       - name: Run local server
         run: npm run start
