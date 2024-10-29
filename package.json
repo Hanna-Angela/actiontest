@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "node app.js"
+    "start": "node app.js 3000"
   },
   "author": "",
   "license": "ISC",
