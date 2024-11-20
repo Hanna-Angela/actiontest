@@ -1,130 +1,27 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
-
+name: Playwright Tests
 on:
   push:
-    branches:
-      - develop
-    # paths-ignore:
-    # - .github/workflows/**
-
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
 jobs:
-  build:
-
+  test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    - uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-
-    
-
-  # test_signup:
-  #   runs-on: ubuntu-latest
-
-  #   needs: build
-
-  #   steps:
-  #   - uses: actions/checkout@v4
-  #   - name: Use Node.js ${{ matrix.node-version }}
-  #     uses: actions/setup-node@v4
-  #     with:
-  #       node-version: 20.18.0
-  #       cache: 'npm'
-  #   - run: npm ci
-  #   - run: npm run build --if-present     
-
-  #   - name: Start Application
-  #     run: node app.js &
-      
-  #   - name: Run Signup Tests
-  #     run: npx mocha test/signupTest.js
-  
-
-  # test_orderstatus:
-  #   runs-on: ubuntu-latest
-
-  #   needs: build
-
-  #   strategy:
-  #     fail-fast: false
-
-  #   steps:
-  #   - uses: actions/checkout@v4
-  #   - name: Use Node.js ${{ matrix.node-version }}
-  #     uses: actions/setup-node@v4
-  #     with:
-  #       node-version: 20.18.0
-  #       cache: 'npm'
-  #   - name: Install Chrome
-  #     run: |
-  #       sudo apt-get update
-  #       sudo apt-get install -y google-chrome-stable
-
-  #   - run: npm ci
-  #   - run: npm run build --if-present
-  #   - name: Start Application
-  #     run: node app.js &
-      
-  #   - name: Run Order Status Tests
-  #     run: npx mocha test/orderStatusTest.js
-
-  # test_orderstatus:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v3
-  #       with: 
-  #         node-version: 20.18.0
-
-  #     - name: Install Dependencies
-  #       run: npm install   
-
-
-  #     - name: Start Server
-  #       run: node app.js &
-
-  #     - name: Create ngrok Tunnel
-  #       uses: ngrok-tunnel-action@v1
-  #       with:
-  #         authtoken: ${{ secrets.NGROK_AUTHTOKEN }} # Replace with your ngrok authtoken
-
-  #     - name: Run Selenium Tests
-  #       run: npm run test test/orderTest.test.js
-
-  test_orderstatus:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with: 
-          node-version: 20.18.0
-          cache: 'npm'
-      - run: npm ci  
-
-      - name: Run local server
-        run: npm run start
-
-      - name: Run Selenium Tests
-        run: npm run test test/orderStatus.test.js
-
-
-
+        node-version: lts/*
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+    - name: Run Playwright tests
+      run: npx playwright test/orderStatus.spec.js
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
