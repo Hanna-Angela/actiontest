@@ -31,7 +31,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test test/orderStatus.spec.js
+      run: npx playwright test test/orderStatus.spec.js --reporter=list
       env:
         MONGODB_URI: mongodb://localhost:27017/abstrak
     - uses: actions/upload-artifact@v4
