@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "playwright"
+    "test": "playwright",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
