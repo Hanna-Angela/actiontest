@@ -1141,6 +1141,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 11,
             "ports": {
               "groups": {
                 "top": {
@@ -1224,7 +1225,6 @@
               ]
             },
             "id": "b1b808a1-c4a5-497d-89c9-4d82598f0225",
-            "zIndex": 11,
             "data": {
               "type": "tm.Process",
               "name": "LDAP",
